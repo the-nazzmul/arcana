@@ -1,10 +1,11 @@
 import Image from "next/image";
+import DotPatternBackground from "./dot-background";
 import { Button } from "./ui/button";
 
 const Hero = () => {
   return (
     <section className="">
-      <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:items-center">
+      <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:items-center relative">
         <div className="mx-auto max-w-xl text-center">
           <div className="flex flex-col items-center gap-5">
             <Image src="/arcana-logo.png" alt="logo" height={200} width={200} />
@@ -26,6 +27,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <DotPatternBackground />
     </section>
   );
 };
