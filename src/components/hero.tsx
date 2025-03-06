@@ -1,6 +1,7 @@
 import Image from "next/image";
 import DotPatternBackground from "./dot-background";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -22,7 +23,7 @@ const Hero = () => {
               and effort.
             </p>
             <Button className="mt-4" size="lg">
-              Get Started
+              <Link href="/dashboard">Get Started</Link>
             </Button>
           </div>
         </div>

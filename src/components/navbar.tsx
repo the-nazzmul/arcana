@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ThemeToggler } from "./theme-toggler";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -13,7 +14,9 @@ const Navbar = () => {
           </h1>
         </div>
         <div className="flex items-center gap-2">
-          <Button>Get Started</Button>
+          <Button>
+            <Link href="/dashboard">Get Started</Link>
+          </Button>
           <ThemeToggler />
         </div>
       </div>
