@@ -1,5 +1,8 @@
 import {
+  ClipboardCheckIcon,
+  Grid2X2CheckIcon,
   HouseIcon,
+  LightbulbIcon,
   LogOutIcon,
   ShieldCheckIcon,
   User2Icon,
@@ -14,4 +17,22 @@ export const APPLICATION_NAV_ITEMS = [
     icon: ShieldCheckIcon,
   },
   { title: "Logout", url: "#", icon: LogOutIcon },
+];
+
+export const STEPPER_OPTIONS = [
+  {
+    id: 1,
+    title: "Category",
+    icon: Grid2X2CheckIcon,
+  },
+  {
+    id: 2,
+    title: "Topic",
+    icon: LightbulbIcon,
+  },
+  {
+    id: 3,
+    title: "Description",
+    icon: ClipboardCheckIcon,
+  },
 ];

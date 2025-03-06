@@ -2,6 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { PlusCircleIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const AddCourse = () => {
   const { user } = useUser();
@@ -15,10 +16,12 @@ const AddCourse = () => {
           Create new course with AI, enhance your journey of learning.
         </p>
       </div>
-      <Button>
-        <PlusCircleIcon className="size-4 mr-1" />
-        Create New Course
-      </Button>
+      <Link href="/create-course">
+        <Button>
+          <PlusCircleIcon className="size-4 mr-1" />
+          Create New Course
+        </Button>
+      </Link>
     </div>
   );
 };

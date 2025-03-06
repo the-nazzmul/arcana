@@ -8,7 +8,7 @@ const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Arcana",
-  description: "Your AI Powered learning assistant.",
+  description: "Manage your courses in Arcana",
 };
 
 export default function RootLayout({
