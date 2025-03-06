@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebars";
+import { AppSidebar } from "@/components/dashboard/app-sidebars";
 import { ThemeToggler } from "@/components/theme-toggler";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { UserButton } from "@clerk/nextjs";
@@ -23,7 +23,11 @@ export default function DashboardLayout({
             <SidebarTrigger />
             <div className="flex items-center gap-2">
               <ThemeToggler />
-              <UserButton />
+              <UserButton
+                appearance={{
+                  elements: { userButtonAvatarBox: "h-[34px] w-[34px]" },
+                }}
+              />
             </div>
           </div>
           <div className="flex-1 overflow-auto p-4">{children}</div>

@@ -2,8 +2,10 @@ import Image from "next/image";
 import DotPatternBackground from "./dot-background";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 
-const Hero = () => {
+const Hero = async () => {
+  const { userId } = await auth();
   return (
     <section className="">
       <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:items-center relative">
@@ -23,7 +25,9 @@ const Hero = () => {
               and effort.
             </p>
             <Button className="mt-4" size="lg">
-              <Link href="/dashboard">Get Started</Link>
+              <Link href="/dashboard">
+                {userId ? "Dashboard" : "Get Started"}
+              </Link>
             </Button>
           </div>
         </div>

@@ -7,10 +7,10 @@ import {
 
 export const APPLICATION_NAV_ITEMS = [
   { title: "Home", url: "/dashboard", icon: HouseIcon },
-  { title: "Explore", url: "#", icon: User2Icon },
+  { title: "Explore", url: "/dashboard/explore", icon: User2Icon },
   {
     title: "Upgrade",
-    url: "#",
+    url: "/dashboard/upgrade",
     icon: ShieldCheckIcon,
   },
   { title: "Logout", url: "#", icon: LogOutIcon },

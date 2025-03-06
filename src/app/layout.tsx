@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider, GoogleOneTap } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 import type { Metadata } from "next";
 import { Recursive } from "next/font/google";
 import "./globals.css";
