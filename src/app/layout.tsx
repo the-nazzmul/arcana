@@ -21,17 +21,15 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={recursive.className}>
-          <main>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <GoogleOneTap />
-              {children}
-            </ThemeProvider>
-          </main>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <GoogleOneTap />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
