@@ -1,4 +1,4 @@
-import AddCourse from "@/components/dashboard/add-course";
+import AddCourse from "@/app/dashboard/_components/add-course";
 
 const DashboardPage = () => {
   return (

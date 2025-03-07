@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Button } from "./ui/button";
-import { ThemeToggler } from "./theme-toggler";
+import { Button } from "../../components/ui/button";
+import { ThemeToggler } from "../../components/theme-toggler";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 

@@ -7,6 +7,7 @@ import {
   SparklesIcon,
 } from "lucide-react";
 import { useState } from "react";
+import SelectCategory from "./_component/select-category";
 
 const CreateCoursePage = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -15,7 +16,7 @@ const CreateCoursePage = () => {
     <div>
       {/* steps */}
       <div className="flex flex-col items-center justify-center pt-20">
-        <h2 className="text-2xl text-primary font-medium">Create Course</h2>
+        <h2 className="text-5xl text-primary font-medium">Create Course</h2>
         <div className="flex justify-evenly w-full mt-12">
           {STEPPER_OPTIONS.map((item, index) => (
             <div key={item.id}>
@@ -36,7 +37,7 @@ const CreateCoursePage = () => {
         </div>
       </div>
       {/* Content */}
-      <div className=""></div>
+      {activeStep === 0 && <SelectCategory />}
 
       {/* button to navigate between steps */}
       <div className="flex items-center justify-between px-10 md:px-20 lg:px-44 mt-10">
@@ -46,9 +47,9 @@ const CreateCoursePage = () => {
             setActiveStep(activeStep - 1);
           }}
           className="rounded-full"
-          size="icon"
         >
           <ArrowLeftCircleIcon className="size-4" />
+          Back
         </Button>
         {activeStep < 2 && (
           <Button
@@ -56,8 +57,8 @@ const CreateCoursePage = () => {
               setActiveStep(activeStep + 1);
             }}
             className="rounded-full"
-            size="icon"
           >
+            Next
             <ArrowRightCircleIcon className="size-4" />
           </Button>
         )}

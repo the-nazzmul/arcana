@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/dashboard/app-sidebars";
+import { AppSidebar } from "@/app/dashboard/_components/app-sidebars";
 import { ThemeToggler } from "@/components/theme-toggler";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { UserButton } from "@clerk/nextjs";

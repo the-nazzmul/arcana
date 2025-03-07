@@ -36,3 +36,36 @@ export const STEPPER_OPTIONS = [
     icon: ClipboardCheckIcon,
   },
 ];
+
+export const CATEGORY_LIST = [
+  {
+    id: 1,
+    title: "Programming",
+    icon: "/programming.png",
+    prompt: "",
+  },
+  {
+    id: 2,
+    title: "Math",
+    icon: "/math.png",
+    prompt: "",
+  },
+  {
+    id: 3,
+    title: "Problem Solving",
+    icon: "/problem-solving.png",
+    prompt: "",
+  },
+  {
+    id: 4,
+    title: "Health",
+    icon: "/health.png",
+    prompt: "",
+  },
+  {
+    id: 5,
+    title: "Creative",
+    icon: "/creativity.png",
+    prompt: "",
+  },
+];
