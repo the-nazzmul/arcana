@@ -50,6 +50,8 @@ export async function POST(req: NextRequest) {
     const courseLayout = result.response.text();
     const parsedCourseLayout = JSON.parse(courseLayout);
 
+    console.log(parsedCourseLayout);
+
     const courseId = uuidv4();
 
     const courseOutline = await db
@@ -63,11 +65,12 @@ export async function POST(req: NextRequest) {
         createdBy: user.primaryEmailAddress?.emailAddress!,
         userName: user.fullName!,
         userProfileImage: user.imageUrl,
+        video: parsedCourseLayout.includesVideos ? "yes" : "no",
       })
       .returning();
 
     return NextResponse.json(
-      { courseOutline: courseOutline[0] },
+      { courseId: courseOutline[0].courseId },
       { status: 200 }
     );
   } catch (error: any) {

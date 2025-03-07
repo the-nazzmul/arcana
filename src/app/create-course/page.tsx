@@ -12,10 +12,12 @@ import SelectCategory from "./_component/select-category";
 import SelectOption from "./_component/select-option";
 import TopicDescription from "./_component/topic-description";
 import LoadingComponent from "@/components/loader";
+import { useRouter } from "next/navigation";
 
 const CreateCoursePage = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const { userCourseInput } = useContext(UserInputContext);
 
@@ -57,8 +59,8 @@ const CreateCoursePage = () => {
         console.error("Error generating course outline", errorData);
         throw new Error(errorData.message);
       }
-      const courseLayoutData = await response.json();
-      console.log(courseLayoutData);
+      const course = await response.json();
+      router.replace(`/create-course/${course.courseId}`);
     } catch (error) {
       console.error("Client-side error", error);
     } finally {
