@@ -7,14 +7,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { UserInputContext } from "@/providers/user-input-context";
+import { useContext } from "react";
 
 const SelectOption = () => {
+  const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
+
+  const handleOptionChange = (fieldName: string, value: string | number) => {
+    setUserCourseInput((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
   return (
     <div className="px-10 md:px-20 lg:px-44">
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col gap-2">
           <Label>🎓 Difficulty Level</Label>
-          <Select>
+          <Select
+            onValueChange={(value) => handleOptionChange("difficulty", value)}
+            defaultValue={userCourseInput.difficulty}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select" />
             </SelectTrigger>
@@ -27,7 +40,10 @@ const SelectOption = () => {
         </div>
         <div className="flex flex-col gap-2">
           <Label>⏳ Course Duration</Label>
-          <Select>
+          <Select
+            onValueChange={(value) => handleOptionChange("duration", value)}
+            defaultValue={userCourseInput.duration}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select" />
             </SelectTrigger>
@@ -42,7 +58,10 @@ const SelectOption = () => {
         </div>
         <div className="flex flex-col gap-2">
           <Label>▶️ Add Video</Label>
-          <Select>
+          <Select
+            onValueChange={(value) => handleOptionChange("video", value)}
+            defaultValue={userCourseInput.video}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select" />
             </SelectTrigger>
@@ -53,8 +72,39 @@ const SelectOption = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-2">
-          <Label>📖 Number of chapters</Label>
-          <Input type="number" />
+          <Label>📖 Number of chapters (Max: 10)</Label>
+
+          <Input
+            step="1"
+            type="number"
+            max="10"
+            onChange={(e) =>
+              handleOptionChange("chapters", parseInt(e.target.value, 10))
+            }
+            onKeyDown={(e) => {
+              const target = e.target as HTMLInputElement;
+
+              if ([".", "e", "-"].includes(e.key)) {
+                e.preventDefault();
+                return;
+              }
+
+              const allowedKeys = [
+                "Backspace",
+                "Delete",
+                "ArrowLeft",
+                "ArrowRight",
+                "Tab",
+              ];
+              if (allowedKeys.includes(e.key)) return;
+
+              const newValue = target.value + e.key;
+              if (parseInt(newValue, 10) > 10) {
+                e.preventDefault();
+              }
+            }}
+            defaultValue={userCourseInput.chapters}
+          />
         </div>
       </div>
     </div>

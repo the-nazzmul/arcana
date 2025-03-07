@@ -2,31 +2,33 @@
 
 import { createContext, useState } from "react";
 
-interface IUserCourseInput {
+export interface IUserCourseInput {
   category: string;
   topic: string;
   description: string;
   difficulty: string;
   duration: string;
-  addVideo: string;
-  numChapters: number;
+  video: string;
+  chapters: number;
 }
 
-interface UserInputContextType {
+interface IUserInputContextType {
   userCourseInput: IUserCourseInput;
   setUserCourseInput: React.Dispatch<React.SetStateAction<IUserCourseInput>>;
 }
 
-export const UserInputContext = createContext<UserInputContextType>({
-  userCourseInput: {
-    category: "",
-    topic: "",
-    description: "",
-    difficulty: "",
-    duration: "",
-    addVideo: "",
-    numChapters: 0,
-  },
+const initialValue: IUserCourseInput = {
+  category: "",
+  topic: "",
+  description: "",
+  difficulty: "",
+  duration: "",
+  video: "",
+  chapters: 1,
+};
+
+export const UserInputContext = createContext<IUserInputContextType>({
+  userCourseInput: initialValue,
   setUserCourseInput: () => {},
 });
 
@@ -35,15 +37,8 @@ export const UserInputContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [userCourseInput, setUserCourseInput] = useState<IUserCourseInput>({
-    category: "",
-    topic: "",
-    description: "",
-    difficulty: "",
-    duration: "",
-    addVideo: "",
-    numChapters: 0,
-  });
+  const [userCourseInput, setUserCourseInput] =
+    useState<IUserCourseInput>(initialValue);
 
   return (
     <UserInputContext.Provider value={{ userCourseInput, setUserCourseInput }}>

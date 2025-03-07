@@ -1,18 +1,69 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { STEPPER_OPTIONS } from "@/lib/constants";
+import { UserInputContext } from "@/providers/user-input-context";
 import {
   ArrowLeftCircleIcon,
   ArrowRightCircleIcon,
   SparklesIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SelectCategory from "./_component/select-category";
-import TopicDescription from "./_component/topic-description";
 import SelectOption from "./_component/select-option";
+import TopicDescription from "./_component/topic-description";
 
 const CreateCoursePage = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const { userCourseInput } = useContext(UserInputContext);
+
+  // Step checking
+  const isStepValid = () => {
+    switch (activeStep) {
+      case 0:
+        return userCourseInput.category.trim() !== "";
+      case 1:
+        return (
+          userCourseInput.topic.trim() !== "" &&
+          userCourseInput.description.trim() !== ""
+        );
+      case 2:
+        return (
+          userCourseInput.difficulty.trim() !== "" &&
+          userCourseInput.duration.trim() !== "" &&
+          userCourseInput.video.trim() !== "" &&
+          userCourseInput.chapters > 0
+        );
+      default:
+        return false;
+    }
+  };
+
+  const handleCourseGeneration = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/generate-course-outline", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userCourseInput),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error generating course outline", errorData);
+        throw new Error(errorData.message);
+      }
+      const courseLayoutData = await response.json();
+      console.log(courseLayoutData);
+    } catch (error) {
+      console.error("Client-side error", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="container mx-auto py-20">
@@ -63,13 +114,18 @@ const CreateCoursePage = () => {
               setActiveStep(activeStep + 1);
             }}
             className="rounded-full"
+            disabled={!isStepValid()}
           >
             Next
             <ArrowRightCircleIcon className="size-4" />
           </Button>
         )}
         {activeStep === 2 && (
-          <Button className="rounded-full">
+          <Button
+            className="rounded-full"
+            disabled={!isStepValid() || loading}
+            onClick={handleCourseGeneration}
+          >
             Generate Course Layout
             <SparklesIcon className="size-4 ml-2" />
           </Button>
