@@ -1,3 +1,4 @@
+import { UserInputContextProvider } from "@/providers/user-input-context";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,5 +11,9 @@ export default function CreateCourseLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <main>
+      <UserInputContextProvider>{children}</UserInputContextProvider>
+    </main>
+  );
 }
