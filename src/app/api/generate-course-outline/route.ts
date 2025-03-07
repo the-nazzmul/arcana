@@ -1,9 +1,23 @@
 import { GenerateCourseLayout } from "@/config/gemini";
+import { db } from "@/lib/db";
+import { courses } from "@/lib/db/schema";
 import { IUserCourseInput } from "@/providers/user-input-context";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse, NextRequest } from "next/server";
+import { v4 as uuidv4 } from "uuid";
 
 export async function POST(req: NextRequest) {
   try {
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const user = await currentUser();
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const userCourseInput: IUserCourseInput = await req.json();
     const {
       category,
@@ -36,7 +50,26 @@ export async function POST(req: NextRequest) {
     const courseLayout = result.response.text();
     const parsedCourseLayout = JSON.parse(courseLayout);
 
-    return NextResponse.json(parsedCourseLayout, { status: 200 });
+    const courseId = uuidv4();
+
+    const courseOutline = await db
+      .insert(courses)
+      .values({
+        courseId: courseId,
+        courseTitle: parsedCourseLayout.courseTitle,
+        courseOutline: parsedCourseLayout.courseOutline,
+        category: parsedCourseLayout.category,
+        difficulty: parsedCourseLayout.difficulty,
+        createdBy: user.primaryEmailAddress?.emailAddress!,
+        userName: user.fullName!,
+        userProfileImage: user.imageUrl,
+      })
+      .returning();
+
+    return NextResponse.json(
+      { courseOutline: courseOutline[0] },
+      { status: 200 }
+    );
   } catch (error: any) {
     console.error(error);
     return NextResponse.json(
