@@ -72,14 +72,14 @@ const SelectOption = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-2">
-          <Label>📖 Number of chapters (Max: 10)</Label>
+          <Label>📖 Number of chapters (Max: 20)</Label>
 
           <Input
             step="1"
             type="number"
-            max="10"
+            max="20"
             onChange={(e) =>
-              handleOptionChange("chapters", parseInt(e.target.value, 10))
+              handleOptionChange("chapters", parseInt(e.target.value))
             }
             onKeyDown={(e) => {
               const target = e.target as HTMLInputElement;
@@ -99,7 +99,7 @@ const SelectOption = () => {
               if (allowedKeys.includes(e.key)) return;
 
               const newValue = target.value + e.key;
-              if (parseInt(newValue, 10) > 10) {
+              if (parseInt(newValue, 10) > 20) {
                 e.preventDefault();
               }
             }}

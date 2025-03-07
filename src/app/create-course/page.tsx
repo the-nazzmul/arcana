@@ -11,6 +11,7 @@ import { useContext, useState } from "react";
 import SelectCategory from "./_component/select-category";
 import SelectOption from "./_component/select-option";
 import TopicDescription from "./_component/topic-description";
+import LoadingComponent from "@/components/loader";
 
 const CreateCoursePage = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -131,6 +132,7 @@ const CreateCoursePage = () => {
           </Button>
         )}
       </div>
+      <LoadingComponent loading={loading} />
     </div>
   );
 };
