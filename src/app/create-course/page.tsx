@@ -8,14 +8,16 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import SelectCategory from "./_component/select-category";
+import TopicDescription from "./_component/topic-description";
+import SelectOption from "./_component/select-option";
 
 const CreateCoursePage = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div>
+    <div className="container mx-auto py-20">
       {/* steps */}
-      <div className="flex flex-col items-center justify-center pt-20">
+      <div className="flex flex-col items-center justify-center">
         <h2 className="text-5xl text-primary font-medium">Create Course</h2>
         <div className="flex justify-evenly w-full mt-12">
           {STEPPER_OPTIONS.map((item, index) => (
@@ -37,7 +39,11 @@ const CreateCoursePage = () => {
         </div>
       </div>
       {/* Content */}
-      {activeStep === 0 && <SelectCategory />}
+      <div className="mt-8 px-10 md:px-20 min-h-[40vh]">
+        {activeStep === 0 && <SelectCategory />}
+        {activeStep === 1 && <TopicDescription />}
+        {activeStep === 2 && <SelectOption />}
+      </div>
 
       {/* button to navigate between steps */}
       <div className="flex items-center justify-between px-10 md:px-20 lg:px-44 mt-10">
