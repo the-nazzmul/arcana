@@ -72,7 +72,7 @@ const SelectOption = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-2">
-          <Label>📖 Number of chapters (Max: 20)</Label>
+          <Label>📖 Chapters (Max: 20)</Label>
 
           <Input
             step="1"
