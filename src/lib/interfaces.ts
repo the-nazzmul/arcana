@@ -6,3 +6,9 @@ export interface IChapterOutline {
   topicsCovered: string[];
   videoLink: string;
 }
+
+export interface IContentOutline {
+  chapterName: number;
+  chapterTitle: string;
+  topicsCovered: string[];
+}

@@ -1,8 +1,11 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { courses } from "@/lib/db/schema";
 import { IChapterOutline } from "@/lib/interfaces";
 import { InferSelectModel } from "drizzle-orm";
-import { CircleSmallIcon, ClockIcon } from "lucide-react";
+import { CircleSmallIcon, ClockIcon, RocketIcon } from "lucide-react";
 
 const ChapterList = ({
   courseInfo,
@@ -13,6 +16,25 @@ const ChapterList = ({
     ? (courseInfo.courseOutline as IChapterOutline[])
     : [];
 
+  const GenerateChapterContent = async () => {
+    const chapters = courseOutline;
+    const response = await fetch("/api/generate-chapter-content", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(chapters),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error generating content for chapters", errorData);
+      throw new Error(errorData.message);
+    }
+    const content = await response.json();
+
+    console.log(content);
+  };
   return (
     <div className="p-2 md:p-10 border rounded-xl shadow-sm mt-3">
       <h2 className="font-semibold text-center text-2xl text-primary pb-5">
@@ -44,6 +66,12 @@ const ChapterList = ({
             </CardContent>
           </Card>
         ))}
+      </div>
+      <div className="mt-5">
+        <Button size="lg" className="w-full" onClick={GenerateChapterContent}>
+          Generate Course Content
+          <RocketIcon className="size-4 ml-1" />
+        </Button>
       </div>
     </div>
   );
