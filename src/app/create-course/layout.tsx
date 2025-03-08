@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { UserInputContextProvider } from "@/providers/user-input-context";
 import type { Metadata } from "next";
 
@@ -13,7 +14,10 @@ export default function CreateCourseLayout({
 }>) {
   return (
     <main>
-      <UserInputContextProvider>{children}</UserInputContextProvider>
+      <UserInputContextProvider>
+        <Navbar />
+        {children}
+      </UserInputContextProvider>
     </main>
   );
 }

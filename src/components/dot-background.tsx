@@ -9,7 +9,7 @@ const DotPatternBackground = () => {
       <DotPattern
         glow={true}
         className={cn(
-          "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+          "[mask-image:radial-gradient(450px_circle_at_center,white,transparent)]"
         )}
       />
     </div>

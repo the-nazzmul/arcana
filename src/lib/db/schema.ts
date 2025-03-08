@@ -18,6 +18,7 @@ export const courses = pgTable("courses", {
   difficulty: varchar("difficulty").notNull(),
   description: varchar("description").notNull(),
   courseOutline: json("courseOutline").notNull(),
+  courseImageUrl: varchar("courseImageUrl"),
   createdBy: varchar("createdBy").notNull(),
   video: varchar("video").notNull().default("yes"),
   userName: varchar("userName").notNull(),

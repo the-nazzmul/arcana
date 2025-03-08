@@ -65,6 +65,7 @@ export async function POST(req: NextRequest) {
         duration: parsedCourseLayout.duration,
         chapters: parsedCourseLayout.numberOfChapters,
         topic: parsedCourseLayout.topic,
+        courseImageUrl: "",
         createdBy: user.emailAddresses[0].emailAddress,
         userName: user.fullName!,
         description: parsedCourseLayout.description,

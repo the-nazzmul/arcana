@@ -9,7 +9,7 @@ import {
   PuzzleIcon,
   TargetIcon,
 } from "lucide-react";
-import Image from "next/image";
+import CourseImageUploader from "./course-image-uploader";
 
 const CourseInfo = ({
   courseInfo,
@@ -17,15 +17,12 @@ const CourseInfo = ({
   courseInfo: InferSelectModel<typeof courses>;
 }) => {
   return (
-    <div className=" p-2 md:p-10 border rounded-xl shadow-sm mt-10">
+    <div className="p-2 md:p-10 border rounded-xl shadow-sm mt-10">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 items-center">
-        <div className="border-2 rounded-lg bg-gray-200 flex items-center justify-center">
-          <Image
-            src="/course-image-placeholder.png"
-            alt="course image"
-            width={400}
-            height={300}
-            className="w-[400px] h-[300px] rounded-xl object-cover"
+        <div>
+          <CourseImageUploader
+            courseId={courseInfo.courseId}
+            initialImageUrl={courseInfo.courseImageUrl}
           />
         </div>
         <div className="flex flex-col gap-4 justify-between h-full">
