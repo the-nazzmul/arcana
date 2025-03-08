@@ -62,8 +62,9 @@ export async function POST(req: NextRequest) {
         courseOutline: parsedCourseLayout.courseOutline,
         category: parsedCourseLayout.category,
         difficulty: parsedCourseLayout.difficulty,
-        createdBy: user.primaryEmailAddress?.emailAddress!,
+        createdBy: user.emailAddresses[0].emailAddress,
         userName: user.fullName!,
+        description: parsedCourseLayout.description,
         userProfileImage: user.imageUrl,
         video: parsedCourseLayout.includesVideos ? "yes" : "no",
       })

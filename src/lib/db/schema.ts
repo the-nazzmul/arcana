@@ -6,6 +6,7 @@ export const courses = pgTable("courses", {
   courseTitle: varchar("courseTitle").notNull(),
   category: varchar("category").notNull(),
   difficulty: varchar("difficulty").notNull(),
+  description: varchar("description").notNull(),
   courseOutline: json("courseOutline").notNull(),
   createdBy: varchar("createdBy").notNull(),
   video: varchar("video").notNull().default("yes"),

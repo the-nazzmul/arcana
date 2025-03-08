@@ -1,5 +1,40 @@
-const CoursePage = () => {
-  return <div>CoursePage</div>;
+import { db } from "@/lib/db";
+import { courses } from "@/lib/db/schema";
+import { currentUser } from "@clerk/nextjs/server";
+import { and, eq } from "drizzle-orm";
+import CourseInfo from "./_components/course-info";
+
+const CoursePage = async ({ params }: { params: { courseId: string } }) => {
+  const user = await currentUser();
+
+  const getCourse = async () => {
+    const result = await db
+      .select()
+      .from(courses)
+      .where(
+        and(
+          eq(courses.courseId, params.courseId),
+          eq(courses.createdBy, user?.emailAddresses[0].emailAddress as string)
+        )
+      );
+    return result[0];
+  };
+  const course = await getCourse();
+  console.log(course);
+
+  return (
+    <div className="mt-10 px-7 md:px-20 lg:px-44">
+      <h2 className="font-bold text-center text-3xl text-primary">
+        Course Layout
+      </h2>
+
+      {/* info */}
+      <CourseInfo courseInfo={course} />
+      {/* course details */}
+
+      {/* chapter */}
+    </div>
+  );
 };
 
 export default CoursePage;

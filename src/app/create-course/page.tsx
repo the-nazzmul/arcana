@@ -8,9 +8,9 @@ import {
   SparklesIcon,
 } from "lucide-react";
 import { useContext, useState } from "react";
-import SelectCategory from "./_component/select-category";
-import SelectOption from "./_component/select-option";
-import TopicDescription from "./_component/topic-description";
+import SelectCategory from "./_components/select-category";
+import SelectOption from "./_components/select-option";
+import TopicDescription from "./_components/topic-description";
 import LoadingComponent from "@/components/loader";
 import { useRouter } from "next/navigation";
 
