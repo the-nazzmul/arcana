@@ -3,6 +3,7 @@ import { courses } from "@/lib/db/schema";
 import { currentUser } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
 import CourseLayout from "./_components/course-layout";
+import NotFound from "@/app/not-found";
 
 const CoursePage = async ({ params }: { params: { courseId: string } }) => {
   const user = await currentUser();
@@ -21,7 +22,8 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
   };
   const course = await getCourse();
 
-  if (!course) return <div>Course not found</div>;
+  if (!course)
+    return <NotFound href="/dashboard" message="Go back to Dashboard" />;
 
   return (
     <div className="py-10 px-2 md:px-20 lg:px-44 container mx-auto">
