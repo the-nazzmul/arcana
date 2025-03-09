@@ -1,4 +1,4 @@
-import { GenerateCourseLayout } from "@/config/gemini";
+import { GenerateCourseLayout } from "@/lib/gemini";
 import { db } from "@/lib/db";
 import { courses } from "@/lib/db/schema";
 import { IUserCourseInput } from "@/providers/user-input-context";
