@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { courses } from "@/lib/db/schema";
 import { InferSelectModel } from "drizzle-orm";
@@ -10,12 +12,33 @@ import {
   TargetIcon,
 } from "lucide-react";
 import CourseImageUploader from "./course-image-uploader";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useRouter } from "next/navigation";
 
 const CourseInfo = ({
   courseInfo,
+  hasContent,
 }: {
   courseInfo: InferSelectModel<typeof courses>;
+  hasContent: number[];
 }) => {
+  const router = useRouter();
+  const courseOutline = Array.isArray(courseInfo.courseOutline)
+    ? courseInfo.courseOutline
+    : [];
+  const allChaptersGenerated = courseOutline.length === hasContent.length;
+
+  const handleStart = () => {
+    if (allChaptersGenerated) {
+      router.push(`/create-course/${courseInfo.courseId}/finish`);
+    }
+  };
+
   return (
     <div className="p-2 md:p-10 border rounded-xl shadow-sm mt-10">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 items-center">
@@ -72,7 +95,13 @@ const CourseInfo = ({
               </div>
             </div>
           </div>
-          <Button className="w-full">Start</Button>
+          <Button
+            className="w-full"
+            disabled={!allChaptersGenerated}
+            onClick={handleStart}
+          >
+            Finish Setup
+          </Button>
         </div>
       </div>
     </div>

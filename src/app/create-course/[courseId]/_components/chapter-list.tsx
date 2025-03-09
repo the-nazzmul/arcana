@@ -8,25 +8,24 @@ import { IChapterOutline } from "@/lib/interfaces";
 import { InferSelectModel } from "drizzle-orm";
 import { CircleSmallIcon, ClockIcon, RocketIcon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 
 const ChapterList = ({
   courseInfo,
+  hasContent,
+  setHasContent,
 }: {
   courseInfo: InferSelectModel<typeof courses>;
+  hasContent: number[];
+  setHasContent: React.Dispatch<React.SetStateAction<number[]>>;
 }) => {
-  // Parse courseOutline
   const courseOutline: IChapterOutline[] = Array.isArray(
     courseInfo.courseOutline
   )
     ? courseInfo.courseOutline
     : [];
-
-  // State for chapters with content
-  const [hasContent, setHasContent] = useState<number[]>([]);
-  // State for generation in progress
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // Fetch chapters with content on mount
   useEffect(() => {
     const fetchChapterStatus = async () => {
       try {
@@ -42,9 +41,8 @@ const ChapterList = ({
       }
     };
     fetchChapterStatus();
-  }, [courseInfo.courseId]);
+  }, [courseInfo.courseId, setHasContent]);
 
-  //Generate content for a chapter
   const GenerateChapterContent = async (chapter: IChapterOutline) => {
     setIsGenerating(true);
     try {
@@ -63,17 +61,18 @@ const ChapterList = ({
 
       if (!response.ok) {
         const errorData = await response.json();
+        toast.error(errorData.message);
         throw new Error(errorData.message);
       }
-
+      toast.success("Chapter content generated successfully");
       setHasContent((prev) => [...prev, chapter.chapterNumber]);
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.message);
       console.error(
         `Error generating content for Chapter ${chapter.chapterNumber}:`,
         error
       );
     } finally {
-      // Re-enable buttons and hide loader
       setIsGenerating(false);
     }
   };
