@@ -6,8 +6,6 @@
 
 ## 🌐 https://arcana-nazz.vercel.app
 
----
-
 ## 📖 Overview
 
 Arcana is an AI-powered learning companion that curates and organizes the best free learning resources into structured courses. It eliminates **option paralysis** by using **Google Gemini API** to generate course outlines and fetching relevant video resources via **YouTube API**.
