@@ -4,7 +4,7 @@
 
 **AI-powered learning companion to simplify your learning journey.**
 
-## 🌐 https://arcana-nazz.vercel.app
+### 🌐 https://arcana-nazz.vercel.app
 
 ## 📖 Overview
 
@@ -92,22 +92,16 @@ npm run dev
 
 Visit `http://localhost:3000` in your browser. 🎉
 
----
-
 ## 🔗 Live Demo
 
 🌍 Check out the live version of Arcana here:
 👉 **[Arcana Live](https://arcana-nazz.vercel.app/)**
 
----
-
 ## 📜 License
 
 This project is licensed under the **MIT License**.
 
----
-
-🚀 Happy Learning with Arcana! 🚀
+## 🚀 Happy Learning with Arcana! 🚀
 
 ```
 
