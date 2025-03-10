@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Here’s the full README in Markdown format, ready to be copied and pasted:
 
-## Getting Started
+````markdown
+# ![Arcana Banner](https://via.placeholder.com/1200x400?text=Arcana+-+AI-Powered+Learning+Companion)
 
-First, run the development server:
+# Arcana 🎓✨
+
+**AI-powered learning companion to simplify your learning journey.**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Arcana-blue?style=for-the-badge)](https://arcana-nazz.vercel.app/)
+
+---
+
+## 📖 Overview
+
+Arcana is an AI-powered learning companion that curates and organizes the best free learning resources into structured courses. It eliminates **option paralysis** by using **Google Gemini API** to generate course outlines and fetching relevant video resources via **YouTube API**.
+
+**Key Highlights:**  
+✅ Create structured courses with AI  
+✅ Fetch relevant video resources automatically  
+✅ Manage course chapters seamlessly  
+✅ Free and Pro-tier access for content generation
+
+---
+
+## 🚀 Features
+
+- **AI-Powered Course Creation** – Users can generate courses based on topic, difficulty, and duration.
+- **YouTube Video Integration** – Fetches relevant videos for each chapter.
+- **Dynamic Content Generation** – One-click chapter content generation using AI.
+- **User Authentication** – Secure sign-in and sign-up using Clerk.
+- **Free & Pro User Tiers** – Free users can generate 5 chapters, while Pro users can create 30 courses per month.
+- **Customizable Course Banner** – Users can personalize their course appearance.
+
+---
+
+## 🛠️ Tech Stack
+
+Arcana is built using modern technologies to ensure a seamless user experience.
+
+### **Frontend & Frameworks**
+
+- Next.js (14.2.5) – React framework for fast and scalable web apps.
+- Tailwind CSS (3.4.1) – Utility-first CSS framework.
+
+### **Backend & APIs**
+
+- Google Gemini API – AI-powered content generation.
+- YouTube API – Fetching relevant video resources.
+- Clerk Authentication – User authentication and session management.
+- PostgreSQL – Database for storing user and course data.
+- Drizzle ORM – TypeScript ORM for PostgreSQL.
+
+### **Utilities & Tools**
+
+- Axios – HTTP client for API calls.
+- Radix UI – Accessible UI components.
+- UploadThing – File uploads.
+- Lucide React – Icon set for a modern UI.
+
+---
+
+## 🏗️ Running Arcana Locally
+
+Follow these steps to set up and run Arcana on your local machine.
+
+### **1️⃣ Clone the Repository**
+
+```bash
+git clone https://github.com/yourusername/arcana.git
+cd arcana
+```
+````
+
+### **2️⃣ Install Dependencies**
+
+Ensure you have [Node.js](https://nodejs.org/) installed. Then, run:
+
+```bash
+npm install
+```
+
+### **3️⃣ Set Up Environment Variables**
+
+Create a `.env` file in the root directory and add the following variables:
+
+```plaintext
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+GEMINI_API_KEY=your_gemini_api_key
+DATABASE_URL=your_database_url
+UPLOADTHING_TOKEN=your_uploadthing_token
+YOUTUBE_API_KEY=your_youtube_api_key
+NEXT_PUBLIC_BASE_URL=
+```
+
+### **4️⃣ Start the Development Server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` in your browser. 🎉
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🔗 Live Demo
 
-## Learn More
+🌍 Check out the live version of Arcana here:  
+👉 **[Arcana Live](https://arcana-nazz.vercel.app/)**
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project is licensed under the **MIT License**.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🚀 Happy Learning with Arcana! 🚀
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+
+```

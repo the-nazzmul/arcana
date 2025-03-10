@@ -10,7 +10,8 @@ const AddCourse = () => {
     <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between pb-4 border-b">
       <div>
         <h1>
-          Hello, <span className="font-bold">{user?.fullName}</span>{" "}
+          Hello,{" "}
+          <span className="font-bold text-primary">{user?.fullName}</span>{" "}
         </h1>
         <p className="text-sm text-muted-foreground">
           Create new course with AI, enhance your journey of learning.

@@ -41,7 +41,9 @@ const DashboardPage = async () => {
       <AddCourse />
       {published.length > 0 && (
         <div className="my-4 border-b pb-8">
-          <h2 className="font-semibold my-4">Published Courses</h2>
+          <h2 className="font-semibold my-4 text-2xl text-primary">
+            Published Courses
+          </h2>
           <div className="grid grid-cols-1  lg:grid-cols-3 gap-4">
             {published.map((course) => (
               <CourseCard key={course.id} course={course} />
@@ -51,7 +53,9 @@ const DashboardPage = async () => {
       )}
       {unpublished.length > 0 && (
         <div className="my-4">
-          <h2 className="font-semibold my-4">Finish Generating Content</h2>
+          <h2 className="font-semibold my-4 text-2xl">
+            Finish Generating Content
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {unpublished.map((course) => (
               <CourseCard key={course.id} course={course} />
