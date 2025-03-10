@@ -102,7 +102,3 @@ Visit `http://localhost:3000` in your browser. 🎉
 This project is licensed under the **MIT License**.
 
 ## 🚀 Happy Learning with Arcana! 🚀
-
-```
-
-```
