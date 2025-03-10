@@ -1,7 +1,4 @@
-Here’s the full README in Markdown format, ready to be copied and pasted:
-
-````markdown
-# ![Arcana Banner](https://via.placeholder.com/1200x400?text=Arcana+-+AI-Powered+Learning+Companion)
+# ![Arcana Banner](https://ghks3sgigz.ufs.sh/f/sJdwCCpG4fmU09mxJQc7RkY6BU9Eap12NbDwnMOHhJCqXVGo)
 
 # Arcana 🎓✨
 
@@ -70,6 +67,7 @@ Follow these steps to set up and run Arcana on your local machine.
 git clone https://github.com/yourusername/arcana.git
 cd arcana
 ```
+
 ````
 
 ### **2️⃣ Install Dependencies**
@@ -108,7 +106,7 @@ Visit `http://localhost:3000` in your browser. 🎉
 
 ## 🔗 Live Demo
 
-🌍 Check out the live version of Arcana here:  
+🌍 Check out the live version of Arcana here:
 👉 **[Arcana Live](https://arcana-nazz.vercel.app/)**
 
 ---
@@ -121,6 +119,4 @@ This project is licensed under the **MIT License**.
 
 🚀 Happy Learning with Arcana! 🚀
 
-```
-
-```
+````
