@@ -12,6 +12,8 @@ const CourseLayout = ({
   courseInfo: InferSelectModel<typeof courses>;
 }) => {
   const [hasContent, setHasContent] = useState<number[]>([]);
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [isPublished, setIsPublished] = useState(courseInfo.isPublished); // Initialize from prop
 
   useEffect(() => {
     const fetchChapterStatus = async () => {
@@ -28,11 +30,18 @@ const CourseLayout = ({
       }
     };
     fetchChapterStatus();
-  }, [courseInfo.courseId]);
+  }, [courseInfo.courseId, isPublishing]);
 
   return (
     <>
-      <CourseInfo courseInfo={courseInfo} hasContent={hasContent} />
+      <CourseInfo
+        courseInfo={courseInfo}
+        hasContent={hasContent}
+        isPublishing={isPublishing}
+        setIsPublishing={setIsPublishing}
+        isPublished={isPublished} // Pass local state
+        setIsPublished={setIsPublished} // Pass setter
+      />
       <ChapterList
         courseInfo={courseInfo}
         hasContent={hasContent}

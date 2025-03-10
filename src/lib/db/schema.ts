@@ -1,4 +1,5 @@
 import {
+  boolean,
   integer,
   json,
   pgTable,
@@ -24,6 +25,7 @@ export const courses = pgTable("courses", {
   userName: varchar("userName").notNull(),
   userProfileImage: varchar("userProfileImage").notNull(),
   createdAt: timestamp("createdAt").defaultNow(),
+  isPublished: boolean("isPublished").notNull().default(false),
 });
 
 export const chapterContent = pgTable("chapterContent", {
@@ -32,7 +34,7 @@ export const chapterContent = pgTable("chapterContent", {
     .notNull()
     .references(() => courses.courseId),
   chapterId: varchar("chapterId").notNull(),
-  chapterNumber: integer("chapterNumber").notNull(), // Added to link with courseOutline
+  chapterNumber: integer("chapterNumber").notNull(),
   content: json("content").notNull(),
   createdAt: timestamp("createdAt").defaultNow(),
   videoId: varchar("videoId").default(""),

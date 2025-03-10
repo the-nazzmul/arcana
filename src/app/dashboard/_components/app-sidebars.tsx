@@ -65,15 +65,17 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="py-4 px-2">
-          <Progress value={40} />
-          <p className="text-sm text-muted-foreground my-2">
-            0 Out of 5 Course created
-          </p>
-          <p className="text-xs">
-            Upgrade your plan for unlimited course generation
-          </p>
-        </div>
+        {open && (
+          <div className="py-4 px-2">
+            <Progress value={40} />
+            <p className="text-sm text-muted-foreground my-2">
+              0 Out of 5 Course created
+            </p>
+            <p className="text-xs">
+              Upgrade your plan for unlimited course generation
+            </p>
+          </div>
+        )}
       </SidebarFooter>
     </Sidebar>
   );

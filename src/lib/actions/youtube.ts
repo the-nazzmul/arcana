@@ -7,6 +7,8 @@ export async function GetYTVideos(query: string) {
     part: "snippet",
     q: query,
     maxResults: 1,
+    type: "video",
+    relevanceLanguage: "en",
     key: process.env.YOUTUBE_API_KEY,
   };
   const res = await axios.get(YOUTUBE_BASE_URL, { params });
