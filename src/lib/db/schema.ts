@@ -26,6 +26,7 @@ export const courses = pgTable("courses", {
   userProfileImage: varchar("userProfileImage").notNull(),
   createdAt: timestamp("createdAt").defaultNow(),
   isPublished: boolean("isPublished").notNull().default(false),
+  isDeleted: boolean("isDeleted").notNull().default(false),
 });
 
 export const chapterContent = pgTable("chapterContent", {

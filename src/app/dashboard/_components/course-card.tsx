@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,38 +12,54 @@ import { InferSelectModel } from "drizzle-orm";
 import {
   BrainIcon,
   EditIcon,
+  EllipsisVerticalIcon,
   NotebookTextIcon,
   RocketIcon,
-  TargetIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import DeleteCourseDropdown from "./delete-course-dropdown";
+import { DeleteCourse } from "@/lib/actions/delete-course";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const CourseCard = ({
   course,
 }: {
   course: InferSelectModel<typeof courses>;
 }) => {
+  const router = useRouter();
+  const handleDelete = async () => {
+    const res = await DeleteCourse({ courseId: course.courseId });
+    if (res.message === "Course deleted successfully") {
+      toast.success(res.message);
+      router.refresh();
+    }
+  };
+
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="p-0">
         <Image
           src={course.courseImageUrl!}
           alt={course.courseTitle}
           width={300}
           height={300}
-          className="w-full h-full aspect-video object-cover rounded-lg"
+          className="w-full h-full aspect-video object-cover rounded-t-xl"
         />
       </CardHeader>
-      <CardContent>
-        <h1 className="text-lg font-semibold">{course.courseTitle}</h1>
+      <CardContent className="mt-3">
+        <div className="flex items-baseline justify-between">
+          <h1 className="text-lg font-semibold">{course.courseTitle}</h1>
+          {course.isPublished && (
+            <DeleteCourseDropdown handleDelete={handleDelete}>
+              <Button variant="ghost" size="icon">
+                <EllipsisVerticalIcon className="size-4" />
+              </Button>
+            </DeleteCourseDropdown>
+          )}
+        </div>
         <div className="flex items-center justify-between my-2">
-          <div className="flex items-center gap-2">
-            <div className="p-1 rounded-full bg-primary/20">
-              <TargetIcon className="size-4" />
-            </div>
-            {course.topic}
-          </div>
           <div className="flex items-center gap-2">
             <div className="p-1 rounded-full bg-primary/20">
               <BrainIcon className="size-4" />
