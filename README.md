@@ -16,8 +16,6 @@ Arcana is an AI-powered learning companion that curates and organizes the best f
 ✅ Manage course chapters seamlessly  
 ✅ Free and Pro-tier access for content generation
 
----
-
 ## 🚀 Features
 
 - **AI-Powered Course Creation** – Users can generate courses based on topic, difficulty, and duration.
@@ -26,8 +24,6 @@ Arcana is an AI-powered learning companion that curates and organizes the best f
 - **User Authentication** – Secure sign-in and sign-up using Clerk.
 - **Free & Pro User Tiers** – Free users can generate 5 chapters, while Pro users can create 30 courses per month.
 - **Customizable Course Banner** – Users can personalize their course appearance.
-
----
 
 ## 🛠️ Tech Stack
 
@@ -53,8 +49,6 @@ Arcana is built using modern technologies to ensure a seamless user experience.
 - UploadThing – File uploads.
 - Lucide React – Icon set for a modern UI.
 
----
-
 ## 🏗️ Running Arcana Locally
 
 Follow these steps to set up and run Arcana on your local machine.
@@ -65,8 +59,6 @@ Follow these steps to set up and run Arcana on your local machine.
 git clone https://github.com/yourusername/arcana.git
 cd arcana
 ```
-
-````
 
 ### **2️⃣ Install Dependencies**
 
@@ -117,4 +109,6 @@ This project is licensed under the **MIT License**.
 
 🚀 Happy Learning with Arcana! 🚀
 
-````
+```
+
+```
