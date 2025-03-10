@@ -97,4 +97,4 @@ Visit `http://localhost:3000` in your browser. 🎉
 🌍 Check out the live version of Arcana here:
 👉 **[Arcana Live](https://arcana-nazz.vercel.app/)**
 
-## 🚀 Happy Learning with Arcana! 🚀
+### 🚀 Happy Learning with Arcana! 🚀
