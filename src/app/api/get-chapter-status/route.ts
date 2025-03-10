@@ -4,6 +4,8 @@ import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
+export const maxDuration = 60;
+
 export async function GET(req: NextRequest) {
   try {
     // Authenticate user

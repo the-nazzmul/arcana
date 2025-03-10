@@ -6,6 +6,8 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse, NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
+export const maxDuration = 60;
+
 export async function POST(req: NextRequest) {
   try {
     const { userId } = await auth();

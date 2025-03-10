@@ -4,6 +4,8 @@ import { currentUser } from "@clerk/nextjs/server";
 import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+export const maxDuration = 60;
+
 export async function PUT(req: Request) {
   try {
     const user = await currentUser();
