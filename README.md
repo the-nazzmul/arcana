@@ -1,10 +1,10 @@
-# ![Arcana Banner](https://ghks3sgigz.ufs.sh/f/sJdwCCpG4fmU09mxJQc7RkY6BU9Eap12NbDwnMOHhJCqXVGo)
+# ![Arcana Banner](https://ghks3sgigz.ufs.sh/f/sJdwCCpG4fmUbetG0h9ut0vYLDmjlJFTPMEUngkHsK6S2eic)
 
 # Arcana 🎓✨
 
 **AI-powered learning companion to simplify your learning journey.**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Arcana-blue?style=for-the-badge)](https://arcana-nazz.vercel.app/)
+## 🌐 https://arcana-nazz.vercel.app
 
 ---
 
