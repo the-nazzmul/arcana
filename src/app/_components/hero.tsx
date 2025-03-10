@@ -1,8 +1,9 @@
 import Image from "next/image";
-import DotPatternBackground from "../../components/dot-background";
-import { Button } from "../../components/ui/button";
+
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
+import { Button } from "@/components/ui/button";
+import DotPatternBackground from "@/components/dot-background";
 
 const Hero = async () => {
   const { userId } = await auth();
