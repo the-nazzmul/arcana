@@ -4,6 +4,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import AddCourse from "@/app/dashboard/_components/add-course";
 import { InferSelectModel } from "drizzle-orm";
+import CourseCard from "./_components/course-card";
 
 const DashboardPage = async () => {
   // Authenticate user
@@ -33,10 +34,26 @@ const DashboardPage = async () => {
   return (
     <div>
       <AddCourse />
-      <div className="my-8">
-        <h2>{unpublished.length}</h2>
-      </div>
-      <div className="my-8">{published.length}</div>
+      {published.length > 0 && (
+        <div className="my-4">
+          <h2 className="font-semibold my-4">Finish Generating Content</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3">
+            {published.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </div>
+      )}
+      {unpublished.length > 0 && (
+        <div className="my-4">
+          <h2 className="font-semibold my-4">Finish Generating Content</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3">
+            {unpublished.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

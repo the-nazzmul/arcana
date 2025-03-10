@@ -38,4 +38,5 @@ export const chapterContent = pgTable("chapterContent", {
   content: json("content").notNull(),
   createdAt: timestamp("createdAt").defaultNow(),
   videoId: varchar("videoId").default(""),
+  isCompleted: boolean("isCompleted").notNull().default(false),
 });
