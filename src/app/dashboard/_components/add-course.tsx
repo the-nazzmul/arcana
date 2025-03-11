@@ -5,7 +5,6 @@ import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 
 const AddCourse = ({ numberOfCourses }: { numberOfCourses: number }) => {
-  console.log(numberOfCourses);
   const { user } = useUser();
   return (
     <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between pb-4 border-b">
