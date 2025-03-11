@@ -20,7 +20,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Progress } from "../../../components/ui/progress";
 
-export function AppSidebar() {
+export function AppSidebar({ courseData }: { courseData: any[] }) {
   const pathname = usePathname();
   const { open } = useSidebar();
 
@@ -67,9 +67,9 @@ export function AppSidebar() {
       <SidebarFooter>
         {open && (
           <div className="py-4 px-2">
-            <Progress value={40} />
+            <Progress value={(100 * courseData.length) / 5} />
             <p className="text-sm text-muted-foreground my-2">
-              0 Out of 5 Course created
+              {courseData.length} Out of 5 Course created
             </p>
             <p className="text-xs">
               Upgrade your plan for unlimited course generation

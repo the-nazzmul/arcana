@@ -22,23 +22,20 @@ const DashboardPage = async () => {
   const courseData = await db
     .select()
     .from(courses)
-    .where(
-      and(
-        eq(courses.createdBy, user.emailAddresses[0].emailAddress),
-        eq(courses.isDeleted, false)
-      )
-    );
+    .where(and(eq(courses.createdBy, user.emailAddresses[0].emailAddress)));
 
   const published = courseData.filter(
-    (course: InferSelectModel<typeof courses>) => course.isPublished // Updated to match your schema
+    (course: InferSelectModel<typeof courses>) =>
+      course.isPublished && !course.isDeleted
   );
   const unpublished = courseData.filter(
-    (course: InferSelectModel<typeof courses>) => !course.isPublished
+    (course: InferSelectModel<typeof courses>) =>
+      !course.isPublished && !course.isDeleted
   );
 
   return (
     <div>
-      <AddCourse />
+      <AddCourse numberOfCourses={courseData.length} />
       {published.length > 0 && (
         <div className="my-4 border-b pb-8">
           <h2 className="font-semibold my-4 text-2xl text-primary">
