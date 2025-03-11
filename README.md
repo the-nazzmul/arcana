@@ -39,13 +39,13 @@ Arcana is built using modern technologies to ensure a seamless user experience.
 - Google Gemini API – AI-powered content generation.
 - YouTube API – Fetching relevant video resources.
 - Clerk Authentication – User authentication and session management.
-- PostgreSQL – Database for storing user and course data.
+- PostgreSQL (NeonDB) – Database for storing user and course data.
 - Drizzle ORM – TypeScript ORM for PostgreSQL.
 
 ### **Utilities & Tools**
 
 - Axios – HTTP client for API calls.
-- Radix UI – Accessible UI components.
+- Shadcn UI – Accessible UI components.
 - UploadThing – File uploads.
 - Lucide React – Icon set for a modern UI.
 

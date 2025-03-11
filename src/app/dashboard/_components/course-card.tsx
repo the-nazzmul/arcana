@@ -38,7 +38,7 @@ const CourseCard = ({
   };
 
   return (
-    <Card>
+    <Card className="flex flex-col">
       <CardHeader className="p-0">
         <Image
           src={course.courseImageUrl!}
@@ -74,7 +74,7 @@ const CourseCard = ({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex items-center gap-2">
+      <CardFooter className="mt-auto flex items-center gap-2">
         <Link href={`/create-course/${course.courseId}`} className="w-full">
           <Button variant="outline" className="w-full">
             <span>Edit</span>
