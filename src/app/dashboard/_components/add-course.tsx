@@ -1,6 +1,6 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
-import { PlusCircleIcon } from "lucide-react";
+import { PlusCircleIcon, ShieldCheckIcon } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 
@@ -18,12 +18,22 @@ const AddCourse = ({ numberOfCourses }: { numberOfCourses: number }) => {
           Create new course with AI, enhance your journey of learning.
         </p>
       </div>
-      <Button disabled={numberOfCourses >= 5}>
-        <Link href="/create-course" className="inline-flex items-center">
-          <PlusCircleIcon className="size-4 mr-1" />
-          Create New Course
-        </Link>
-      </Button>
+      {numberOfCourses < 5 && (
+        <Button disabled={numberOfCourses >= 5}>
+          <Link href="/create-course" className="inline-flex items-center">
+            <PlusCircleIcon className="size-4 mr-1" />
+            Create New Course
+          </Link>
+        </Button>
+      )}
+      {numberOfCourses >= 5 && (
+        <Button>
+          <Link href="/dashboard/upgrade" className="inline-flex items-center">
+            <ShieldCheckIcon className="size-4 mr-1" />
+            Upgrade to Pro
+          </Link>
+        </Button>
+      )}
     </div>
   );
 };
