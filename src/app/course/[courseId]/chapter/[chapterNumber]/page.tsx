@@ -1,8 +1,11 @@
+// app/[courseId]/[chapterNumber]/page.tsx
 import NotFound from "@/app/not-found";
 import { db } from "@/lib/db";
 import { chapterContent, userCourseProgress } from "@/lib/db/schema";
+import { IChapterContent } from "@/lib/interfaces";
 import { currentUser } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
+import ChapterContentRenderer from "./_components/chapter-content-renderer";
 
 export default async function ChapterPage({
   params,
@@ -14,7 +17,6 @@ export default async function ChapterPage({
     throw new Error("Unauthorized");
   }
 
-  // Parse chapterNumber from URL with validation
   const chapterNum = parseInt(params.chapterNumber);
   if (isNaN(chapterNum)) {
     return <NotFound />;
@@ -38,7 +40,7 @@ export default async function ChapterPage({
     });
 
   // Fetch chapter content
-  const chapter = await db
+  const chapterData = await db
     .select()
     .from(chapterContent)
     .where(
@@ -49,14 +51,19 @@ export default async function ChapterPage({
     )
     .limit(1);
 
-  if (!chapter[0]) {
+  const chapter = chapterData[0];
+  if (!chapter) {
     return <div>Chapter not found</div>;
   }
 
+  const content: IChapterContent = chapter.content as IChapterContent;
+
   return (
-    <div>
-      <h1>Chapter {chapter[0].chapterNumber}</h1>
-      {/* <div>{chapter[0].content}</div> */}
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">
+        Chapter {chapter.chapterNumber}
+      </h1>
+      <ChapterContentRenderer content={content} />
     </div>
   );
 }

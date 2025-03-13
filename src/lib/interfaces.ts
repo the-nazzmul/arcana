@@ -12,3 +12,18 @@ export interface IContentOutline {
   chapterTitle: string;
   topicsCovered: string[];
 }
+
+export interface IChapterContent {
+  introduction: string;
+  sections: {
+    title: string;
+    explanation: string;
+    example: {
+      description: string;
+      code: string;
+    };
+    usageNotes: string;
+    realWorldApplication: string;
+  }[];
+  conclusion: string;
+}
