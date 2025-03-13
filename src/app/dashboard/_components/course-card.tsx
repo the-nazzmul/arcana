@@ -23,11 +23,12 @@ import { DeleteCourse } from "@/lib/actions/delete-course";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const CourseCard = ({
-  course,
-}: {
-  course: InferSelectModel<typeof courses>;
-}) => {
+// Extend course type to include lastChapterNumber
+type CourseWithProgress = InferSelectModel<typeof courses> & {
+  lastChapterNumber: number;
+};
+
+const CourseCard = ({ course }: { course: CourseWithProgress }) => {
   const router = useRouter();
   const handleDelete = async () => {
     const res = await DeleteCourse({ courseId: course.courseId });
@@ -82,7 +83,7 @@ const CourseCard = ({
           </Button>
         </Link>
         <Link
-          href={`/course/${course.courseId}`}
+          href={`/course/${course.courseId}/chapter/${course.lastChapterNumber}`}
           className={`w-full ${course.isPublished === false && "hidden"}`}
         >
           <Button className="w-full">

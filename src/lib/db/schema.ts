@@ -5,6 +5,7 @@ import {
   pgTable,
   serial,
   timestamp,
+  unique,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -41,3 +42,17 @@ export const chapterContent = pgTable("chapterContent", {
   videoId: varchar("videoId").default(""),
   isCompleted: boolean("isCompleted").notNull().default(false),
 });
+
+export const userCourseProgress = pgTable(
+  "userCourseProgress",
+  {
+    id: serial("id").primaryKey(),
+    userEmail: varchar("userEmail").notNull(),
+    courseId: varchar("courseId").notNull(),
+    lastChapterNumber: integer("lastChapterNumber").notNull().default(1),
+    updatedAt: timestamp("updated_at").defaultNow(),
+  },
+  (table) => ({
+    uniqueUserCourse: unique().on(table.userEmail, table.courseId),
+  })
+);
